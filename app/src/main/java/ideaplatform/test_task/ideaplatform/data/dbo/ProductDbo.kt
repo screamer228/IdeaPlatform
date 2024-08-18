@@ -3,7 +3,7 @@ package ideaplatform.test_task.ideaplatform.data.dbo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "item")
 data class ProductDbo(
     @PrimaryKey val id: Int,
     val name: String,

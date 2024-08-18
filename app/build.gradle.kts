@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id("kotlin-kapt")
 }
 
 android {
@@ -55,8 +56,20 @@ dependencies {
     //koin
     implementation(libs.bundles.koin)
 
+//    implementation(libs.bundles.room)
+
+    implementation(libs.gson)
+
     //room
-    implementation(libs.androidx.room.ktx)
+//    implementation(libs.room-runtime)
+//    implementation(libs.androidx-room-ktx)
+//    kapt(libs.room-compiler)
+
+    //room
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
 
     //viewModel
     implementation(libs.lifecycle.viewmodel.compose)
@@ -69,6 +82,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.lifecycle.runtime.compose.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

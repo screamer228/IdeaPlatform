@@ -1,5 +1,6 @@
 package ideaplatform.test_task.ideaplatform.ui.screen
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ideaplatform.test_task.ideaplatform.domain.usecase.ChangeProductAmountByIdUseCase
@@ -31,6 +32,15 @@ class MainViewModel(
     fun getUiState(): StateFlow<UiState> = uiState
 
     init {
+        Log.d(
+            "MainViewModel check",
+            "ViewModel создан с зависимостями: " +
+                    "$getProductListUseCase," +
+                    " $getProductListByTitleUseCase," +
+                    " $changeProductAmountByIdUseCase," +
+                    " $deleteProductByIdUseCase," +
+                    " $productMapper"
+        )
         getProductList()
     }
 
@@ -46,6 +56,12 @@ class MainViewModel(
                         it.copy(productList = productList)
                     }
                 }
+        }
+    }
+
+    fun updateSearchField(searchFieldValue: String) {
+        _uiState.update {
+            it.copy(searchField = searchFieldValue)
         }
     }
 
