@@ -13,10 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import ideaplatform.test_task.ideaplatform.R
+import ideaplatform.test_task.ideaplatform.ui.theme.BlueDark
 import ideaplatform.test_task.ideaplatform.ui.theme.GrayDark
 import ideaplatform.test_task.ideaplatform.ui.theme.GrayLight
 import ideaplatform.test_task.ideaplatform.utils.noRippleClickable
@@ -38,13 +40,13 @@ fun DeleteDialog(
                 )
                 .background(
                     color = GrayLight,
-                    shape = RoundedCornerShape(12.dp)
+                    shape = RoundedCornerShape(20.dp)
                 ),
             verticalArrangement = Arrangement.spacedBy(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
-                painter = painterResource(R.drawable.ic_settings),
+                painter = painterResource(R.drawable.ic_warning),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(
@@ -53,7 +55,7 @@ fun DeleteDialog(
                 tint = GrayDark
             )
             Text(
-                text = "Количество товара",
+                text = "Удаление товара",
                 fontSize = 22.sp
             )
             Text(
@@ -61,27 +63,37 @@ fun DeleteDialog(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        horizontal = 20.dp
-                    )
+                        horizontal = 24.dp
+                    ),
+                color = GrayDark,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.W400
             )
             Row(
                 modifier = Modifier
                     .align(Alignment.End)
                     .padding(
-                        end = 20.dp,
-                        bottom = 20.dp
+                        top = 12.dp,
+                        end = 40.dp,
+                        bottom = 36.dp
                     ),
-                horizontalArrangement = Arrangement.spacedBy(24.dp)
+                horizontalArrangement = Arrangement.spacedBy(40.dp)
             ) {
                 Text(
                     text = "Нет",
                     modifier = Modifier
-                        .noRippleClickable { onDismissRequest() }
+                        .noRippleClickable { onDismissRequest() },
+                    color = BlueDark,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.SemiBold,
                 )
                 Text(
                     text = "Да",
                     modifier = Modifier
-                        .noRippleClickable { onAccept(productIdArg) }
+                        .noRippleClickable { onAccept(productIdArg) },
+                    color = BlueDark,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.SemiBold
                 )
             }
         }

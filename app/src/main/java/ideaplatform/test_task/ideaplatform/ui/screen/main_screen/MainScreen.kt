@@ -64,10 +64,12 @@ fun MainScreen(
             )
         }
         CustomSearchBar(
-            searchValue = uiState.searchQuery,
+            searchQuery = uiState.searchQuery,
             modifier = Modifier
                 .padding(
+                    start = 12.dp,
                     top = 16.dp,
+                    end = 12.dp,
                     bottom = 10.dp
                 ),
             onValueChange = { viewModel.updateSearchField(it) }

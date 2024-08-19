@@ -1,19 +1,15 @@
 package ideaplatform.test_task.ideaplatform.ui.ui_kit
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text2.BasicTextField2
-import androidx.compose.foundation.text2.input.TextFieldLineLimits
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -23,64 +19,63 @@ import androidx.compose.ui.unit.sp
 import ideaplatform.test_task.ideaplatform.R
 import ideaplatform.test_task.ideaplatform.ui.theme.GrayDark
 import ideaplatform.test_task.ideaplatform.ui.theme.White
+import ideaplatform.test_task.ideaplatform.utils.noRippleClickable
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CustomSearchBar(
-    searchValue: String,
+    searchQuery: String,
     modifier: Modifier = Modifier,
     onValueChange: (String) -> Unit
 ) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
+    OutlinedTextField(
+        value = searchQuery,
+        onValueChange = { onValueChange(it) },
         modifier = modifier
             .fillMaxWidth()
-            .padding(
-                horizontal = 12.dp
-            )
             .background(
                 color = White,
                 shape = RoundedCornerShape(4.dp)
+            ),
+        placeholder = {
+            Text(
+                text = "Поиск товаров",
+                color = Color.DarkGray,
+                fontSize = 14.sp
             )
-            .border(
-                width = 1.dp,
-                color = GrayDark,
-                shape = RoundedCornerShape(4.dp)
+        },
+        leadingIcon = {
+            Icon(
+                painter = painterResource(R.drawable.ic_search),
+                contentDescription = null,
+                tint = GrayDark
             )
-    ) {
-        Icon(
-            painter = painterResource(R.drawable.ic_search),
-            contentDescription = null,
-            modifier = Modifier
-                .padding(
-                    vertical = 16.dp,
-                    horizontal = 12.dp
-                ),
-            tint = GrayDark
-        )
-        Box(
-            modifier = Modifier
-                .weight(1f),
-            contentAlignment = Alignment.CenterStart
-        ) {
-            if (searchValue.isEmpty()) {
-                Text(
-                    text = "Поиск товаров",
-                    color = Color.DarkGray,
-                    fontSize = 14.sp
+        },
+        trailingIcon = {
+            if (searchQuery.isNotEmpty()) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_clear),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .noRippleClickable { onValueChange("") },
+                    tint = GrayDark
                 )
             }
-            BasicTextField2(
-                value = searchValue,
-                onValueChange = { onValueChange(it) },
-                lineLimits = TextFieldLineLimits.SingleLine,
-                textStyle = TextStyle.Default.copy(
-                    color = Color.DarkGray,
-                    fontSize = 14.sp
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-            )
-        }
-    }
+        },
+        singleLine = true,
+        textStyle = TextStyle.Default.copy(
+            color = Color.DarkGray,
+            fontSize = 14.sp
+        ),
+        colors = OutlinedTextFieldDefaults.colors(
+        ).copy(
+            focusedContainerColor = White,
+            unfocusedContainerColor = White,
+            focusedTextColor = Color.Black,
+            unfocusedTextColor = Color.Black,
+            focusedPlaceholderColor = GrayDark,
+            unfocusedPlaceholderColor = GrayDark,
+            cursorColor = GrayDark,
+
+        )
+    )
 }

@@ -16,12 +16,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import ideaplatform.test_task.ideaplatform.R
 import ideaplatform.test_task.ideaplatform.ui.model.Product
+import ideaplatform.test_task.ideaplatform.ui.theme.BlueDark
 import ideaplatform.test_task.ideaplatform.ui.theme.GrayDark
 import ideaplatform.test_task.ideaplatform.ui.theme.GrayLight
 import ideaplatform.test_task.ideaplatform.utils.noRippleClickable
@@ -46,7 +49,7 @@ fun EditDialog(
                 )
                 .background(
                     color = GrayLight,
-                    shape = RoundedCornerShape(12.dp)
+                    shape = RoundedCornerShape(20.dp)
                 ),
             verticalArrangement = Arrangement.spacedBy(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -72,41 +75,51 @@ fun EditDialog(
                     painter = painterResource(R.drawable.ic_minus),
                     contentDescription = null,
                     modifier = Modifier
-                        .size(36.dp)
+                        .size(32.dp)
                         .noRippleClickable(
                             enabled = productAmount > 0,
                             onClick = { productAmount -= UNIT_OF_CHANGE_AMOUNT }
-                        )
+                        ),
+                    tint = BlueDark,
                 )
                 Text(
-                    text = productAmount.toString()
+                    text = productAmount.toString(),
+                    fontSize = 18.sp
                 )
                 Icon(
                     painter = painterResource(R.drawable.ic_plus),
                     contentDescription = null,
                     modifier = Modifier
-                        .size(36.dp)
-                        .noRippleClickable { productAmount += UNIT_OF_CHANGE_AMOUNT }
+                        .size(32.dp)
+                        .noRippleClickable { productAmount += UNIT_OF_CHANGE_AMOUNT },
+                    tint = BlueDark
                 )
             }
             Row(
                 modifier = Modifier
                     .align(Alignment.End)
                     .padding(
-                        end = 20.dp,
-                        bottom = 20.dp
+                        top = 12.dp,
+                        end = 36.dp,
+                        bottom = 36.dp
                     ),
-                horizontalArrangement = Arrangement.spacedBy(24.dp)
+                horizontalArrangement = Arrangement.spacedBy(32.dp)
             ) {
                 Text(
                     text = "Отмена",
                     modifier = Modifier
-                        .noRippleClickable { onDismissRequest() }
+                        .noRippleClickable { onDismissRequest() },
+                    color = BlueDark,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.SemiBold
                 )
                 Text(
                     text = "Принять",
                     modifier = Modifier
-                        .noRippleClickable { onAccept(productArg, productAmount) }
+                        .noRippleClickable { onAccept(productArg, productAmount) },
+                    color = BlueDark,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.SemiBold
                 )
             }
         }
