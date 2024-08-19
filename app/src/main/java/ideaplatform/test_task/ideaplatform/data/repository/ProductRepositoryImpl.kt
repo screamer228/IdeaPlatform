@@ -18,12 +18,6 @@ class ProductRepositoryImpl(
                 productDboList.map { productEntityMapper.mapDboToEntity(it) }
             }
 
-    override fun getProductListByTitle(title: String): Flow<List<ProductEntity>> =
-        productDao.getProductsByTitle(title)
-            .map { productDboList ->
-                productDboList.map { productEntityMapper.mapDboToEntity(it) }
-            }
-
     override suspend fun changeProductAmountById(productId: Int, newAmount: Int) {
         productDao.updateProductAmountById(productId, newAmount)
     }

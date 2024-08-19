@@ -1,6 +1,7 @@
 package ideaplatform.test_task.ideaplatform.ui.ui_kit
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -13,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ideaplatform.test_task.ideaplatform.ui.theme.GrayDark
 
 @Composable
 fun CustomChipsRow(
@@ -40,7 +42,7 @@ fun CustomChip(
         modifier = modifier
             .border(
                 width = 1.dp,
-                color = Color.Black,
+                color = GrayDark,
                 shape = RoundedCornerShape(8.dp)
             )
     ) {

@@ -11,16 +11,17 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text2.BasicTextField2
 import androidx.compose.foundation.text2.input.TextFieldLineLimits
 import androidx.compose.material3.Icon
-import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import ideaplatform.test_task.ideaplatform.R
+import ideaplatform.test_task.ideaplatform.ui.theme.GrayDark
 import ideaplatform.test_task.ideaplatform.ui.theme.White
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -43,7 +44,7 @@ fun CustomSearchBar(
             )
             .border(
                 width = 1.dp,
-                color = Color.Black,
+                color = GrayDark,
                 shape = RoundedCornerShape(4.dp)
             )
     ) {
@@ -52,26 +53,31 @@ fun CustomSearchBar(
             contentDescription = null,
             modifier = Modifier
                 .padding(
-                    vertical = 6.dp,
-                    horizontal = 8.dp
+                    vertical = 16.dp,
+                    horizontal = 12.dp
                 ),
-            tint = Color.DarkGray
+            tint = GrayDark
         )
         Box(
             modifier = Modifier
-                .weight(1f)
+                .weight(1f),
+            contentAlignment = Alignment.CenterStart
         ) {
             if (searchValue.isEmpty()) {
                 Text(
                     text = "Поиск товаров",
                     color = Color.DarkGray,
+                    fontSize = 14.sp
                 )
             }
             BasicTextField2(
                 value = searchValue,
                 onValueChange = { onValueChange(it) },
                 lineLimits = TextFieldLineLimits.SingleLine,
-//                textStyle = TextStyle_BodyText1.copy(color = NeutralActive),
+                textStyle = TextStyle.Default.copy(
+                    color = Color.DarkGray,
+                    fontSize = 14.sp
+                ),
                 modifier = Modifier
                     .fillMaxWidth()
             )

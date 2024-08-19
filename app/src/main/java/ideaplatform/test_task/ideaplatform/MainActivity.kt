@@ -12,7 +12,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.view.WindowCompat
-import ideaplatform.test_task.ideaplatform.ui.screen.MainScreen
+import ideaplatform.test_task.ideaplatform.ui.screen.main_screen.MainScreen
 import ideaplatform.test_task.ideaplatform.ui.theme.BlueLight
 import ideaplatform.test_task.ideaplatform.ui.theme.IdeaPlatformTheme
 

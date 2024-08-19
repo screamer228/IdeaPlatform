@@ -7,8 +7,6 @@ interface ProductRepository {
 
     fun getProductList(): Flow<List<ProductEntity>>
 
-    fun getProductListByTitle(title: String): Flow<List<ProductEntity>>
-
     suspend fun changeProductAmountById(productId: Int, newAmount: Int)
 
     suspend fun deleteProductById(productId: Int)
