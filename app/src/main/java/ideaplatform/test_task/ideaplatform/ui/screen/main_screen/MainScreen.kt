@@ -13,9 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import ideaplatform.test_task.ideaplatform.R
 import ideaplatform.test_task.ideaplatform.ui.screen.delete_dialog.DeleteDialog
 import ideaplatform.test_task.ideaplatform.ui.screen.edit_dialog.EditDialog
 import ideaplatform.test_task.ideaplatform.ui.screen.main_screen.common.NeedDialogState
@@ -53,7 +55,7 @@ fun MainScreen(
                 )
         ) {
             Text(
-                text = "Список товаров",
+                text = stringResource(R.string.list_of_products),
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(

@@ -23,12 +23,21 @@ android {
     }
 
     buildTypes {
+        debug {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            buildConfigField("String", "PRODUCT_DATABASE_NAME", "\"product_database\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "PRODUCT_DATABASE_NAME", "\"product_database\"")
         }
     }
     compileOptions {
@@ -40,6 +49,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -51,31 +61,26 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("org.jetbrains:annotations:23.0.0")
+        exclude(group = "com.intellij", module = "annotations")
+    }
+}
+
 dependencies {
 
     //koin
     implementation(libs.bundles.koin)
 
-//    implementation(libs.bundles.room)
-
+    //gson
     implementation(libs.gson)
 
     //room
-//    implementation(libs.room-runtime)
-//    implementation(libs.androidx-room-ktx)
-//    kapt(libs.room-compiler)
-
-    //room
-    val roomVersion = "2.6.1"
-    implementation("androidx.room:room-runtime:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation(libs.bundles.room)
 
     //viewModel
     implementation(libs.lifecycle.viewmodel.compose)
-
-    //navigation
-    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -86,6 +91,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.lifecycle.runtime.compose.android)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

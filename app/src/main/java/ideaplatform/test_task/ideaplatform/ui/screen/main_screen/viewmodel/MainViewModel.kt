@@ -80,10 +80,10 @@ class MainViewModel(
                     productEntityList.map { productMapper.mapEntityToUi(it) }
                 }
                 .collect { productList ->
-                    _uiState.update {
-                        it.copy(
+                    _uiState.update { state ->
+                        state.copy(
                             searchResultProductList = filterProductList(
-                                it.searchQuery,
+                                state.searchQuery,
                                 productList
                             ),
                             productList = productList

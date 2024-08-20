@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -55,11 +56,11 @@ fun DeleteDialog(
                 tint = GrayDark
             )
             Text(
-                text = "Удаление товара",
+                text = stringResource(R.string.deleting_product),
                 fontSize = 22.sp
             )
             Text(
-                text = "Вы действительно хотите удалить выбранный товар?",
+                text = stringResource(R.string.are_you_sure_you_want_delete_product),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
@@ -80,7 +81,7 @@ fun DeleteDialog(
                 horizontalArrangement = Arrangement.spacedBy(40.dp)
             ) {
                 Text(
-                    text = "Нет",
+                    text = stringResource(R.string.no),
                     modifier = Modifier
                         .noRippleClickable { onDismissRequest() },
                     color = BlueDark,
@@ -88,7 +89,7 @@ fun DeleteDialog(
                     fontWeight = FontWeight.SemiBold,
                 )
                 Text(
-                    text = "Да",
+                    text = stringResource(R.string.yes),
                     modifier = Modifier
                         .noRippleClickable { onAccept(productIdArg) },
                     color = BlueDark,

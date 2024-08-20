@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -92,7 +93,7 @@ fun ProductCard(
                     modifier = Modifier
                 ) {
                     Text(
-                        text = "На складе",
+                        text = stringResource(R.string.on_storage),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -107,7 +108,7 @@ fun ProductCard(
                         )
                 ) {
                     Text(
-                        text = "Дата добавления",
+                        text = stringResource(R.string.date_of_addition),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold
                     )

@@ -16,8 +16,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -64,7 +64,7 @@ fun EditDialog(
                 tint = GrayDark
             )
             Text(
-                text = "Количество товара",
+                text = stringResource(R.string.amount_of_product),
                 fontSize = 22.sp
             )
             Row(
@@ -106,7 +106,7 @@ fun EditDialog(
                 horizontalArrangement = Arrangement.spacedBy(32.dp)
             ) {
                 Text(
-                    text = "Отмена",
+                    text = stringResource(R.string.cancel),
                     modifier = Modifier
                         .noRippleClickable { onDismissRequest() },
                     color = BlueDark,
@@ -114,7 +114,7 @@ fun EditDialog(
                     fontWeight = FontWeight.SemiBold
                 )
                 Text(
-                    text = "Принять",
+                    text = stringResource(R.string.accept),
                     modifier = Modifier
                         .noRippleClickable { onAccept(productArg, productAmount) },
                     color = BlueDark,

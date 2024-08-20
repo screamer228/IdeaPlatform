@@ -1,12 +1,11 @@
 package ideaplatform.test_task.ideaplatform.data.room
 
 import android.content.Context
-import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.sqlite.db.SupportSQLiteDatabase
+import ideaplatform.test_task.ideaplatform.BuildConfig
 import ideaplatform.test_task.ideaplatform.data.dbo.ProductDbo
 
 @Database(entities = [ProductDbo::class], version = 1)
@@ -24,20 +23,8 @@ abstract class ProductDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ProductDatabase::class.java,
-                    "product_database.db"
-                ).createFromAsset("data.db")
-                    .addCallback(object : Callback() {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                            Log.d("ProductDatabase check", "База данных создана из assets")
-                        }
-
-                        override fun onOpen(db: SupportSQLiteDatabase) {
-                            super.onOpen(db)
-                            Log.d("ProductDatabase check", "База данных открыта")
-                        }
-                    })
-
+                    BuildConfig.PRODUCT_DATABASE_NAME
+                ).createFromAsset(DATABASE_FILE_PATH)
                     .build()
                 INSTANCE = instance
                 instance
@@ -45,3 +32,5 @@ abstract class ProductDatabase : RoomDatabase() {
         }
     }
 }
+
+private const val DATABASE_FILE_PATH = "data.db"

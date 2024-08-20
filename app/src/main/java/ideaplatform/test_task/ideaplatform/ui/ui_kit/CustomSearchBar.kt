@@ -1,10 +1,8 @@
 package ideaplatform.test_task.ideaplatform.ui.ui_kit
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -13,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,7 +37,7 @@ fun CustomSearchBar(
             ),
         placeholder = {
             Text(
-                text = "Поиск товаров",
+                text = stringResource(R.string.search_for_products),
                 color = Color.DarkGray,
                 fontSize = 14.sp
             )
@@ -76,6 +75,6 @@ fun CustomSearchBar(
             unfocusedPlaceholderColor = GrayDark,
             cursorColor = GrayDark,
 
-        )
+            )
     )
 }

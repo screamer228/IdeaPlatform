@@ -2,7 +2,7 @@ package ideaplatform.test_task.ideaplatform.ui.mapper
 
 import ideaplatform.test_task.ideaplatform.domain.entity.ProductEntity
 import ideaplatform.test_task.ideaplatform.ui.model.Product
-import ideaplatform.test_task.ideaplatform.utils.Utils.toNormalFormatDate
+import ideaplatform.test_task.ideaplatform.utils.Extensions.toNormalFormatDate
 
 class ProductMapperImpl : ProductMapper {
 
