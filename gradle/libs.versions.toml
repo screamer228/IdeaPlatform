@@ -10,6 +10,7 @@ activityCompose = "1.9.1"
 composeBom = "2024.06.00"
 lifecycle-viewmodel-compose = "2.8.4"
 room = "2.6.1"
+ksp = "2.0.10-1.0.24"
 koin = "3.5.6"
 lifecycleRuntimeComposeAndroid = "2.8.4"
 gson = "2.11.0"
@@ -39,12 +40,11 @@ androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", nam
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 [bundles]
-room = ["room-runtime", "room-ktx", "room-compiler"]
+room = ["room-runtime", "room-ktx"]
 koin = ["koin-core", "koin-compose"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
-
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

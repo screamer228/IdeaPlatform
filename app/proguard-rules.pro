@@ -19,3 +19,15 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Room
+-keep class androidx.room.** { *; }
+-keep class androidx.sqlite.db.SupportSQLiteDatabase { *; }
+-keep class androidx.sqlite.db.SupportSQLiteOpenHelper { *; }
+-keep class androidx.room.RoomDatabase { *; }
+-keep class androidx.room.RoomDatabase$Companion { *; }
+-keep class androidx.room.util.TableInfo { *; }
+
+# Keep generated code by Room
+-keep class * extends androidx.room.RoomDatabase
+-keep class * extends androidx.room.RoomDatabase$Callback

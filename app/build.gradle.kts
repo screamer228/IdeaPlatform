@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
-    id("kotlin-kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -23,21 +23,23 @@ android {
     }
 
     buildTypes {
-        debug {
+        getByName("debug") {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
             buildConfigField("String", "PRODUCT_DATABASE_NAME", "\"product_database\"")
+            signingConfig = signingConfigs.getByName("debug")
         }
-        release {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
             buildConfigField("String", "PRODUCT_DATABASE_NAME", "\"product_database\"")
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -78,6 +80,7 @@ dependencies {
 
     //room
     implementation(libs.bundles.room)
+    ksp(libs.room.compiler)
 
     //viewModel
     implementation(libs.lifecycle.viewmodel.compose)
